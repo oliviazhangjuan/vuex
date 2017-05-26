@@ -75,3 +75,34 @@ computed:{
 - 每个mutation都有一个字符串的**事件类型(type)**和一个**回调函数(handler)**
 - 回调函数就是实际进行状态更改的地方，并接受state作为第一参数
 - mutation必须是同步函数
+
+### Action
+- action提交的是mutation,而不是直接变更状态
+- action 可以包含任意异步操作
+- 使用store.dispatch('increment')方式触发
+- store.dispatch可以处理 被触发的action的回调函数返回的 promise,并且store.dispatch仍旧返回Promise
+
+### Modules
+解决store对象变得臃肿庞大，将store分割成模块(module),每个模块有自己的state,mutation,action,getter,甚至是嵌套子模块
+- 模块的局部状态
+    对于模块内部的mutation和getter,接收的第一个参数是**模块的局部状态对象**
+	对于模块内部的action，局部状态通过context.state暴露出来，根节点状态则为context.rootState
+	对于模块内部的getter,根节点状态会作为第三个参数暴露出来
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
